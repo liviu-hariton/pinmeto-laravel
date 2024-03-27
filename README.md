@@ -23,6 +23,7 @@ Integration with PinMeTo offers the ability to fetch information and send update
   * [Get locations ratings](#ratings)
 * [License](#license)
 * [PinMeTo official API documentation](#pinmeto-official-api-documentation)
+* [Disclaimer](#disclaimer)
 * [Standalone PHP library](#standalone-php-library)
 
 ## Requirements
@@ -402,6 +403,15 @@ This library is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 ## PinMeTo official API documentation
 * The V2 documentation (locations data) is available on [PinMeTo GitHub](https://github.com/PinMeTo/documentation)
 * The V3 documentation (locations metrics) is available on [PinMeTo API - Documentation](https://api.pinmeto.com/documentation/v3/)
+
+## Disclaimer
+I am not affiliated with PinMeTo, but I am a developer who sees the value of their location services and wanted to create tools to simplify integration for the PHP community.
+
+While this library facilitate integration with PinMeTo's location services API, it is a separate entity maintained and supported by me. Any issues, questions, or inquiries related to these library should be directed to me and not to PinMeTo.
+
+I greatly appreciate the availability of PinMeTo's API, which has enabled me to create this library and enhance the functionality of applications that rely on location-based services. However, the development and maintenance of this library is solely my responsibility (and any contributors to this repository).
+
+Feel free to explore this library here on GitHub, contribute, and make the most of PinMeTo’s powerful location services!
 
 ## Standalone PHP library
 A standalone PHP library is available also [here](https://github.com/liviu-hariton/pinmeto-php-api).
