@@ -1,0 +1,38 @@
+{
+    "name": "liviu-hariton/pinmeto-laravel",
+    "description": "A Laravel package that provides convenient access to the PinMeTo API, allowing users to interact with PinMeTo's locations data and metrics",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "LHDev\\PinmetoLaravel\\": "src/"
+        }
+    },
+    "extra" :  {
+        "laravel": {
+            "providers": [
+                "LHDev\\PinmetoLaravel\\PinMeToServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Liviu Hariton",
+            "email": "liviu.hariton@gmail.com",
+            "homepage": "https://eu.liviuhariton.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "source": "https://github.com/liviu-hariton/pinmeto-laravel",
+        "issues": "https://github.com/liviu-hariton/pinmeto-laravel/issues"
+    },
+    "keywords": ["pinmeto", "rest", "pinmeto-laravel", "pinmeto-rest", "pinmeto-api"],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0",
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}
