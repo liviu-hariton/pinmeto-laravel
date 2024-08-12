@@ -15,6 +15,10 @@ class Pinmeto
     const _API_VERSION_LOCATIONS = '2';
     const _API_VERSION_METRICS = '3';
 
+    const _NETWORKS = [
+        'google', 'facebook', 'bing', 'apple'
+    ];
+
     private string $token;
     private string $endpoint;
 
@@ -157,11 +161,18 @@ class Pinmeto
             ];
         }
 
-        // Construct the URL based on API version and call type
+        // In case of locations V2 API
         if(!str_contains($call, "token") && !str_contains($call, "google") && !str_contains($call, "facebook")) {
-            $url .= '/v'.self::_API_VERSION_LOCATIONS.'/'.$this->account_id.'/'.$call;
-        } elseif(str_contains($call, "google") || str_contains($call, "facebook")) {
-            $url .= '/listings/v'.self::_API_VERSION_METRICS.'/'.$this->account_id.'/'.$call;
+            $url = $this->endpoint.'/v'.self::_API_VERSION_LOCATIONS.'/'.$this->account_id.'/'.$call;
+        }
+
+        if(str_contains($call, "categories/")) {
+            $url = $this->endpoint.'/v'.self::_API_VERSION_LOCATIONS.'/'.$this->account_id.'/'.$call;
+        }
+
+        // In case of metrics V3 API
+        if((str_contains($call, "google") || str_contains($call, "facebook")) && !str_contains($call, "categories")) {
+            $url = $this->endpoint.'/listings/v'.self::_API_VERSION_METRICS.'/'.$this->account_id.'/'.$call;
         }
 
         // Add query parameters for GET requests
@@ -301,5 +312,21 @@ class Pinmeto
         ];
 
         return $this->connect('ratings/'.$source.'/'.($store_id !== '' ? $store_id : ''), $parameters);
+    }
+
+    /**
+     * Get the categories for a specific network
+     *
+     * @param string $network The network name (`google` or `apple` or `facebook` or `bing`)
+     * @return bool|string|stdClass
+     * @throws Exception
+     */
+    public function getNetworkCategories(string $network): bool|string|stdClass
+    {
+        if(!in_array($network, self::_NETWORKS)) {
+            throw new Exception("The provided network name is not valid. Possible values: `".implode('`, `', self::_NETWORKS)."`");
+        }
+
+        return $this->connect('categories/'.$network);
     }
 }

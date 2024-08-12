@@ -21,6 +21,7 @@ Integration with PinMeTo offers the ability to fetch information and send update
   * [Get locations metrics data](#metrics)
   * [Get locations Google keywords](#google-keywords)
   * [Get locations ratings](#ratings)
+  * [Get network categories](#network-categories)
 * [License](#license)
 * [PinMeTo official API documentation](#pinmeto-official-api-documentation)
 * [Disclaimer](#disclaimer)
@@ -390,6 +391,31 @@ class YourController extends Controller
             from_date: '2024-01-01', // the format is `YYYY-MM-DD`
             to_date: '2024-03-31', // the format is `YYYY-MM-DD`
             store_id: 8
+        );
+
+        /* ... rest of your code ... */
+    }
+}
+```
+
+### Network categories
+
+Get the list of categories per network. The available networks are `google` or `apple` or `facebook` or `bing`
+
+```php
+
+<?php
+
+namespace App\Http\Controllers;
+
+use LHDev\PinmetoLaravel\Pinmeto;
+
+class YourController extends Controller
+{
+    public function yourMethod(Pinmeto $pinmeto)
+    {
+        $network_categories = $pinmeto->getNetworkCategories(
+            network: 'apple'
         );
 
         /* ... rest of your code ... */
